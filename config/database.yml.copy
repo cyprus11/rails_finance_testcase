@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: rails_finance_testcase_development
+
+test:
+  <<: *default
+  database: rails_finance_testcase_test
+
+production:
+  <<: *default
+  database: rails_finance_testcase_production
+  username: rails_finance_testcase
+  password: <%= ENV["RAILS_FINANCE_TESTCASE_DATABASE_PASSWORD"] %>
